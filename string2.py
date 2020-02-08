@@ -18,10 +18,14 @@
 
 
 def verbing(s):
-    """Your code goes here.  Edit this docstring."""
-    return
-
-
+    if len(s) >= 3 and s[-3:] != 'ing':
+        s = s + 'ing'
+        return s
+    elif s[-3:] == 'ing':
+        s = s + 'ly'
+        return s
+    else:
+        return s
 # E. not_bad
 # Given a string, find the first appearance of the
 # substring 'not' and 'bad'. If the 'bad' follows
@@ -30,11 +34,14 @@ def verbing(s):
 # Return the resulting string.
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
+
 def not_bad(s):
-    """Your code goes here.  Edit this docstring."""
-    return
-
-
+    not_index = s.find('not')
+    if 'not' in s and 'bad' in s[not_index:]:
+        s = s[0:not_index] + 'good'
+        return s
+    else:
+        return s
 # F. front_back
 # Consider dividing a string into two halves.
 # If the length is even, the front and back halves are the same length.
@@ -43,8 +50,12 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-    """Your code goes here.  Edit this docstring."""
-    return
+    midA = len(a)//2 + len(a) % 2
+    midB = len(b)//2 + len(b) % 2
+
+    final_string = a[:midA] + b[:midB] + a[midA:] + b[midB:]
+
+    return final_string
 
 
 # Provided simple test() function used in main() to print
